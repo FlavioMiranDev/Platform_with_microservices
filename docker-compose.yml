@@ -1,0 +1,108 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_platform
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: oml?ZIAU_woCyxE
+      TZ: America/Sao_Paulo
+      MYSQL_INNODB_BUFFER_POOL_SIZE: 512M
+      MYSQL_MAX_CONNECTIONS: 200
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - shared-net
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis-cache
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    networks:
+      - shared-net
+
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: rabbitmq_platform
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: iLku+ghEts-O
+      RABBITMQ_DEFAULT_VHOST: /
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - shared-net
+
+  miranexus.auth:
+    build:
+      context: ./MiraNexus.Auth
+      dockerfile: Dockerfile
+    container_name: MiraNexus_Auth
+    restart: unless-stopped
+    ports:
+      - "5279:5279"
+    depends_on:
+      - mysql
+      - redis
+      - rabbitmq
+    networks:
+      - shared-net
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+
+      ConnectionStrings__MySQLConnection: "Server=mysql;Port=3306;Database=MiraNixus.auth;User=root;Password=oml?ZIAU_woCyxE"
+      ConnectionStrings__RedisConnection: "redis:6379"
+
+      RabbitMq__Host: "rabbitmq"
+      RabbitMq__User: "admin"
+      RabbitMq__Pass: "iLku+ghEts-O"
+
+  miranexus.emailsender:
+    build:
+      context: ./MiraNexus.EmailSender
+      dockerfile: Dockerfile
+    container_name: email-sender-worker
+    restart: unless-stopped
+    depends_on:
+      - rabbitmq
+
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: admin
+      RABBITMQ_PASS: iLku+ghEts-O
+      QUEUE_NAME: userCreatedqueue
+
+      SMTP_HOST: smtp.gmail.com
+      SMTP_PORT: 465
+      SMTP_USER: mirandev.flaviomiranda@gmail.com
+      SMTP_PASS: ykusfovgcbzxlpua
+
+      FRONTEND_URL: http://localhost:8080/none
+      PLATFORM_NAME: MiraNexus
+
+      SUPPORT_PHONE: 99123456789
+      SUPPORT_EMAIL: suporte.nao_responda@gmail.com
+
+    networks:
+      - shared-net
+
+volumes:
+  mysql_data:
+  redis_data:
+  rabbitmq_data:
+
+networks:
+  shared-net:
+    driver: bridge

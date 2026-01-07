@@ -1,0 +1,28 @@
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+
+# expõe a porta interna do container
+EXPOSE 5279
+ENV ASPNETCORE_URLS=http://+:5279
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# copia apenas o csproj para otimizar cache do restore
+COPY *.csproj ./
+RUN dotnet restore
+
+# copia o restante do código
+COPY . .
+
+# compila e publica versão otimizada
+RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+
+# copia artefatos publicados
+COPY --from=build /app/publish .
+
+# inicializa a aplicação
+ENTRYPOINT ["dotnet", "MiraNexus.Auth.dll"]

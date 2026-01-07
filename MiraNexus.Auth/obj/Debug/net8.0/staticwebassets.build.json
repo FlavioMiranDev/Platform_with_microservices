@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "5RwiIMSeB637QzKYS8wUbTmDbzf4jvVTuOJET7b/l2w=",
+  "Source": "MiraNexus.Auth",
+  "BasePath": "_content/MiraNexus.Auth",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

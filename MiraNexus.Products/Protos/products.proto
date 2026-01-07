@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option csharp_namespace = "MiraNexus.Products.Protos";
+
+// desc: Package Description
+package products;
+
+// REQUESTS
+message ProductRequestById {
+    string id = 1;
+}
+
+message ProductListRequest {
+    string tenantId = 1;
+}
+
+message ProductCreateRequest {
+    string tenantId = 2;
+    string categoryId = 3;
+    string name = 4;
+    string description = 5;
+    float price = 6;
+}
+
+// RESPONSES
+message ProductResponse {
+    string id = 1;
+    string tenantId = 2;
+    string categoryId = 3;
+    string name = 4;
+    string description = 5;
+    float price = 6;
+    bool isActive = 7;
+    google.protobuf.Timestamp createdAt = 8;
+    google.protobuf.Timestamp updatedAt = 9;
+}
+
+message ProductListResponse {
+    repeated ProductResponse products = 1;
+}
+
+
+// SERVICES
+service ProductService {
+    rpc GetById (ProductRequestById) returns (ProductResponse);
+    rpc GetAll (ProductListRequest) returns (ProductListResponse);
+    rpc Create (ProductCreateRequest) returns (ProductResponse);
+}
