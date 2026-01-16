@@ -1,0 +1,6 @@
+@MiraNexus.Gateway_HostAddress = http://localhost:5037
+
+GET {{MiraNexus.Gateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
