@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiraNexus.Products.Data;
 
@@ -11,9 +12,11 @@ using MiraNexus.Products.Data;
 namespace MiraNexus.Products.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260116142034_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,6 +31,7 @@ namespace MiraNexus.Products.Migrations
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(36)
                         .HasColumnType("char(36)")
+                        .HasDefaultValue(new Guid("cdfe0edc-1c25-454c-a51b-9937cc2e6b44"))
                         .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
@@ -73,6 +77,7 @@ namespace MiraNexus.Products.Migrations
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(36)
                         .HasColumnType("char(36)")
+                        .HasDefaultValue(new Guid("6b352fd0-b0ac-4052-a8de-b6a7b612d612"))
                         .HasColumnName("id");
 
                     b.Property<Guid>("CategoryId")
@@ -143,6 +148,7 @@ namespace MiraNexus.Products.Migrations
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(36)
                         .HasColumnType("char(36)")
+                        .HasDefaultValue(new Guid("dc91b5a9-eff1-4d2c-9ea0-c3d00cee2ab4"))
                         .HasColumnName("id");
 
                     b.Property<string>("City")

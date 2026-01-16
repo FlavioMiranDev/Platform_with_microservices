@@ -1,8 +1,9 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+
 option csharp_namespace = "MiraNexus.Products.Protos";
 
-// desc: Package Description
 package products;
 
 // REQUESTS
@@ -20,6 +21,22 @@ message ProductCreateRequest {
     string name = 4;
     string description = 5;
     float price = 6;
+    optional string ref = 7;
+}
+
+message ProductUpdateRequest {
+    string id = 1;
+    string tenantId = 2;
+    string categoryId = 3;
+    string name = 4;
+    string description = 5;
+    float price = 6;
+    bool isActive = 7;
+    optional string ref = 8;
+}
+
+message ProductDeleteRequest {
+    string id = 1;
 }
 
 // RESPONSES
@@ -33,11 +50,14 @@ message ProductResponse {
     bool isActive = 7;
     google.protobuf.Timestamp createdAt = 8;
     google.protobuf.Timestamp updatedAt = 9;
+    optional string ref = 10;
 }
 
 message ProductListResponse {
     repeated ProductResponse products = 1;
 }
+
+message ProductDeleteResponse {}
 
 
 // SERVICES
@@ -45,4 +65,6 @@ service ProductService {
     rpc GetById (ProductRequestById) returns (ProductResponse);
     rpc GetAll (ProductListRequest) returns (ProductListResponse);
     rpc Create (ProductCreateRequest) returns (ProductResponse);
+    rpc Update (ProductUpdateRequest) returns (ProductResponse);
+    rpc Delete (ProductDeleteRequest) returns (ProductDeleteResponse);
 }
