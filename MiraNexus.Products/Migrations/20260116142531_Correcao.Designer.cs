@@ -12,8 +12,8 @@ using MiraNexus.Products.Data;
 namespace MiraNexus.Products.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260105224741_Initial")]
-    partial class Initial
+    [Migration("20260116142531_Correcao")]
+    partial class Correcao
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,86 +29,107 @@ namespace MiraNexus.Products.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
                         .HasColumnType("char(36)")
                         .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("created_at");
+                        .HasColumnName("createdAt");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<DateTime>("CreatedAt"));
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(1500)
+                        .HasColumnType("varchar(1500)")
                         .HasColumnName("description");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("name");
 
                     b.Property<Guid>("TenantId")
+                        .HasMaxLength(36)
                         .HasColumnType("char(36)")
                         .HasColumnName("tenant_id");
 
                     b.Property<DateTime?>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("updated_at");
+                        .HasColumnName("updatedAt")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TenantId");
 
-                    b.ToTable("categories");
+                    b.ToTable("categories", (string)null);
                 });
 
             modelBuilder.Entity("MiraNexus.Products.Models.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
                         .HasColumnType("char(36)")
                         .HasColumnName("id");
 
                     b.Property<Guid>("CategoryId")
+                        .HasMaxLength(36)
                         .HasColumnType("char(36)")
                         .HasColumnName("category_id");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("created_at");
+                        .HasColumnName("createdAt");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<DateTime>("CreatedAt"));
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(1500)
+                        .HasColumnType("varchar(1500)")
                         .HasColumnName("description");
 
                     b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true)
                         .HasColumnName("is_active");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("name");
 
                     b.Property<decimal>("Price")
+                        .ValueGeneratedOnAdd()
+                        .HasPrecision(10, 3)
                         .HasColumnType("decimal(10,3)")
+                        .HasDefaultValue(0m)
                         .HasColumnName("price");
 
+                    b.Property<string>("Ref")
+                        .HasMaxLength(15)
+                        .HasColumnType("varchar(15)")
+                        .HasColumnName("ref");
+
                     b.Property<Guid>("TenantId")
+                        .HasMaxLength(36)
                         .HasColumnType("char(36)")
                         .HasColumnName("tenant_id");
 
                     b.Property<DateTime?>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("updated_at");
+                        .HasColumnName("updatedAt")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
 
                     b.HasKey("Id");
 
@@ -116,20 +137,21 @@ namespace MiraNexus.Products.Migrations
 
                     b.HasIndex("TenantId");
 
-                    b.ToTable("products");
+                    b.ToTable("products", (string)null);
                 });
 
             modelBuilder.Entity("MiraNexus.Products.Models.Tenant", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
                         .HasColumnType("char(36)")
                         .HasColumnName("id");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("city");
 
                     b.Property<string>("CompanyName")
@@ -141,24 +163,24 @@ namespace MiraNexus.Products.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("created_at");
+                        .HasColumnName("createdAt");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<DateTime>("CreatedAt"));
 
                     b.Property<string>("Email")
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("email");
 
                     b.Property<string>("MunicipalRegistration")
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
                         .HasColumnName("municipal_registration");
 
                     b.Property<string>("Neighborhood")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)")
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
                         .HasColumnName("neighborhood");
 
                     b.Property<string>("Phone")
@@ -202,12 +224,14 @@ namespace MiraNexus.Products.Migrations
                         .HasColumnName("trading_name");
 
                     b.Property<DateTime?>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("updated_at");
+                        .HasColumnName("updatedAt")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("tenants");
+                    b.ToTable("tenants", (string)null);
                 });
 
             modelBuilder.Entity("MiraNexus.Products.Models.Category", b =>

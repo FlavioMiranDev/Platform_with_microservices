@@ -98,6 +98,23 @@ services:
     networks:
       - shared-net
 
+  miranexus.products:
+    build:
+      context: ./MiraNexus.Products
+      dockerfile: Dockerfile
+    container_name: miranexus_products
+    restart: unless-stopped
+    expose:
+      - "5280"
+    depends_on:
+      - mysql
+    networks:
+      - shared-net
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+
+      ConnectionStrings__MySQLConnection: "Server=mysql;Port=3306;Database=MiraNexus.products;User=root;Password=oml?ZIAU_woCyxE"
+
 volumes:
   mysql_data:
   redis_data:

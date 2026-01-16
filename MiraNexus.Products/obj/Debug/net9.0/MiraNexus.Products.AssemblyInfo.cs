@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MiraNexus.Products")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a1821778b4bfe8427b37bb987b5245785b4d4d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("MiraNexus.Products")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MiraNexus.Products")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

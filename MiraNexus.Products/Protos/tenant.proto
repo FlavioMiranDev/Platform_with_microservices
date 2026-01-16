@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "MiraNexus.Products.Protos";
+
+package tenant;
+
+
+// REQUESTS
+message TenantRequestById {
+    string id = 1;
+}
+
+message TenantCreateRequest {
+    string companyName = 1;
+    string tradingName = 2;
+    string taxId = 3;
+    string street = 4;
+    string neighborhood = 5;
+    string city = 6;
+    string state = 7;
+    string postalCode = 8;
+    optional string stateRegistration = 9;
+    optional string municipalRegistration = 10;
+    optional string email = 11;
+    optional string phone = 12;
+}
+
+message TenantUpdateRequest {
+    string id = 1;
+    string companyName = 2;
+    string tradingName = 3;
+    string taxId = 4;
+    string street = 5;
+    string neighborhood = 6;
+    string city = 7;
+    string state = 8;
+    string postalCode = 9;
+    optional string stateRegistration = 10;
+    optional string municipalRegistration = 11;
+    optional string email = 12;
+    optional string phone = 13;
+}
+
+message TenantDeleteRequest {
+    string id = 1;
+}
+
+// RESPONSES
+message TenantResponse {
+    string id = 1;
+    string companyName = 2;
+    string tradingName = 3;
+    string taxId = 4;
+    string street = 5;
+    string neighborhood = 6;
+    string city = 7;
+    string state = 8;
+    string postalCode = 9;
+    google.protobuf.Timestamp createdAt = 10;
+    google.protobuf.Timestamp updatedAt = 11;
+    optional string stateRegistration = 12;
+    optional string municipalRegistration = 13;
+    optional string email = 14;
+    optional string phone = 15;
+}
+
+message TenantDeleteResponse {}
+
+
+// SERVICES
+service TenantService {
+    rpc GetById (TenantRequestById) returns (TenantResponse);
+    rpc Create (TenantCreateRequest) returns (TenantResponse);
+    rpc Update (TenantUpdateRequest) returns (TenantResponse);
+    rpc Delete (TenantDeleteRequest) returns (TenantDeleteResponse);
+}

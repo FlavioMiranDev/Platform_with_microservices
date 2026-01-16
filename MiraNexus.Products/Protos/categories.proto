@@ -1,3 +1,59 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+
 option csharp_namespace = "MiraNexus.Products.Protos";
+
+package category;
+
+// REQUESTS
+message CategoryRequestById {
+    string id = 1;
+}
+
+message CategoryListRequest {
+    string tenantId = 1;
+}
+
+message CategoryCreateRequest {
+    string tenantId = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message CategoryUpdateRequest {
+    string id = 1;
+    string tenantId = 2;
+    string name = 3;
+    string description = 4;
+}
+
+message CategoryDeleteRequest {
+    string id = 1;
+}
+
+// RESPONSES
+message CategoryResponse {
+    string id = 1;
+    string tenantId = 2;
+    string name = 3;
+    string description = 4;
+    google.protobuf.Timestamp createdAt = 5;
+    google.protobuf.Timestamp updatedAt = 6;
+}
+
+message CategoryListResponse {
+    repeated CategoryResponse Categories = 1;
+}
+
+message CategoryDeleteResponse {}
+
+
+// SERVICES
+service CategoryService {
+    rpc GetById (CategoryRequestById) returns (CategoryResponse);
+    rpc GetAll (CategoryListRequest) returns (CategoryListResponse);
+    rpc Create (CategoryCreateRequest) returns (CategoryResponse);
+    rpc Update (CategoryUpdateRequest) returns (CategoryResponse);
+    rpc Delete (CategoryDeleteRequest) returns (CategoryDeleteResponse);
+}
