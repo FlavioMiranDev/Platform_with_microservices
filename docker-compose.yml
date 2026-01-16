@@ -50,8 +50,6 @@ services:
       dockerfile: Dockerfile
     container_name: MiraNexus_Auth
     restart: unless-stopped
-    ports:
-      - "5279:5279"
     depends_on:
       - mysql
       - redis
@@ -61,7 +59,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
 
-      ConnectionStrings__MySQLConnection: "Server=mysql;Port=3306;Database=MiraNixus.auth;User=root;Password=oml?ZIAU_woCyxE"
+      ConnectionStrings__MySQLConnection: "Server=mysql;Port=3306;Database=MiraNexus.auth;User=root;Password=oml?ZIAU_woCyxE"
       ConnectionStrings__RedisConnection: "redis:6379"
 
       RabbitMq__Host: "rabbitmq"
@@ -104,8 +102,6 @@ services:
       dockerfile: Dockerfile
     container_name: miranexus_products
     restart: unless-stopped
-    expose:
-      - "5280"
     depends_on:
       - mysql
     networks:
@@ -114,6 +110,21 @@ services:
       ASPNETCORE_ENVIRONMENT: "Development"
 
       ConnectionStrings__MySQLConnection: "Server=mysql;Port=3306;Database=MiraNexus.products;User=root;Password=oml?ZIAU_woCyxE"
+
+  miranexus.gateway:
+    build:
+      context: ./MiraNexus.Gateway
+      dockerfile: Dockerfile
+    container_name: miranexus_gateway
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    depends_on:
+      - miranexus.auth
+    networks:
+      - shared-net
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
 
 volumes:
   mysql_data:
