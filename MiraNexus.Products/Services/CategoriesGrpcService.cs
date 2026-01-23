@@ -1,5 +1,5 @@
 using Grpc.Core;
-using MiraNexus.Products.Protos;
+using MiraNexus.Contracts.Protos;
 using MiraNexus.Products.Application;
 
 namespace MiraNexus.Products.Services;

@@ -1,0 +1,12 @@
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/bin/Debug/net8.0/MiraNexus.Contracts.deps.json
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/bin/Debug/net8.0/MiraNexus.Contracts.dll
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/bin/Debug/net8.0/MiraNexus.Contracts.pdb
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/obj/Debug/net8.0/MiraNexus.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/obj/Debug/net8.0/MiraNexus.Contracts.AssemblyInfoInputs.cache
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/obj/Debug/net8.0/MiraNexus.Contracts.AssemblyInfo.cs
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/obj/Debug/net8.0/MiraNexus.Contracts.csproj.CoreCompileInputs.cache
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/obj/Debug/net8.0/MiraNexus.Contracts.sourcelink.json
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/obj/Debug/net8.0/MiraNexus.Contracts.dll
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/obj/Debug/net8.0/refint/MiraNexus.Contracts.dll
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/obj/Debug/net8.0/MiraNexus.Contracts.pdb
+/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/obj/Debug/net8.0/ref/MiraNexus.Contracts.dll

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "MiraNexus.Contracts/1.0.0": {
+        "runtime": {
+          "MiraNexus.Contracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MiraNexus.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

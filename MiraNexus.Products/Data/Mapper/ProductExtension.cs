@@ -1,6 +1,6 @@
 using MiraNexus.Products.Data.Extentions;
 using MiraNexus.Products.Models;
-using MiraNexus.Products.Protos;
+using MiraNexus.Contracts.Protos;
 
 namespace MiraNexus.Products.Data.Mapper;
 

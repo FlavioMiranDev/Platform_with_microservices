@@ -1,5 +1,4 @@
-
-using MiraNexus.Products.Protos;
+using MiraNexus.Contracts.Protos;
 using MiraNexus.Products.Data.Mapper;
 using MiraNexus.Products.Models;
 using MiraNexus.Products.Repositories;

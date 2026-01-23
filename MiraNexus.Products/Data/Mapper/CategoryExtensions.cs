@@ -1,4 +1,4 @@
-using MiraNexus.Products.Protos;
+using MiraNexus.Contracts.Protos;
 using MiraNexus.Products.Data.Extentions;
 using MiraNexus.Products.Models;
 

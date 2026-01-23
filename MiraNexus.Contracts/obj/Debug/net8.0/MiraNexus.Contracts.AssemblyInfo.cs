@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("MiraNexus.Products")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("MiraNexus.Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+21e6ff06cbd8ce8fba68c4d88484ce62d6440e08")]
-[assembly: System.Reflection.AssemblyProductAttribute("MiraNexus.Products")]
-[assembly: System.Reflection.AssemblyTitleAttribute("MiraNexus.Products")]
+[assembly: System.Reflection.AssemblyProductAttribute("MiraNexus.Contracts")]
+[assembly: System.Reflection.AssemblyTitleAttribute("MiraNexus.Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qS3gRabW7uw=",
+  "dgSpecHash": "C0R1wuJxiKs=",
   "success": true,
-  "projectFilePath": "/home/flavio/DEV/platform.backend/MiraNexus.Products/MiraNexus.Products.csproj",
+  "projectFilePath": "/home/flavio/DEV/Platform_with_microservices/MiraNexus.Products/MiraNexus.Products.csproj",
   "expectedPackageFiles": [
     "/home/flavio/.nuget/packages/google.protobuf/3.27.0/google.protobuf.3.27.0.nupkg.sha512",
     "/home/flavio/.nuget/packages/grpc.aspnetcore/2.64.0/grpc.aspnetcore.2.64.0.nupkg.sha512",
