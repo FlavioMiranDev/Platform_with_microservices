@@ -1,7 +1,6 @@
-using System;
 using Grpc.Core;
 using MiraNexus.Products.Application;
-using MiraNexus.Products.Protos;
+using MiraNexus.Contracts.Protos;
 
 namespace MiraNexus.Products.Services;
 

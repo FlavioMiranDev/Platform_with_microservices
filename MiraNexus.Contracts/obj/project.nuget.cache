@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "MFfXVu1HwnI=",
+  "success": true,
+  "projectFilePath": "/home/flavio/DEV/Platform_with_microservices/MiraNexus.Contracts/MiraNexus.Contracts.csproj",
+  "expectedPackageFiles": [
+    "/home/flavio/.nuget/packages/microsoft.netcore.app.ref/8.0.15/microsoft.netcore.app.ref.8.0.15.nupkg.sha512",
+    "/home/flavio/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.15/microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}

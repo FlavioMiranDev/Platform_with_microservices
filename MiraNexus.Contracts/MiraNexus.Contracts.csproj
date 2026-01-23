@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Protos/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\tenant.proto" GrpcServices="None" />
+    <Protobuf Include="Protos\products.proto" GrpcServices="None" />
+    <Protobuf Include="Protos\categories.proto" GrpcServices="None" />
+  </ItemGroup>
+
+</Project>

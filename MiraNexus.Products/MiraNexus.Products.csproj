@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\products.proto" GrpcServices="Server" />
-    <Protobuf Include="Protos\categories.proto" GrpcServices="Server" />
-    <Protobuf Include="Protos\tenant.proto" GrpcServices="Server" />
+    <Protobuf Include="..\MiraNexus.Contracts\Protos\products.proto" GrpcServices="Server" />
+    <Protobuf Include="..\MiraNexus.Contracts\Protos\categories.proto" GrpcServices="Server" />
+    <Protobuf Include="..\MiraNexus.Contracts\Protos\tenant.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +26,10 @@
     <Folder Include="Data/Mapper/" />
     <Folder Include="Models/" />
     <Folder Include="Repositories/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MiraNexus.Contracts\MiraNexus.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
